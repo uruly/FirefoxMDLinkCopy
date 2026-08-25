@@ -48,3 +48,14 @@ https://example.com/article?id=123
 ## Notes
 
 Internal Firefox pages such as `about:` pages cannot be copied by this extension.
+
+## Checks
+
+```sh
+python3 -m json.tool manifest.json
+node --check background.js
+node --check shared/defaults.js
+node --check shared/url-utils.js
+node --check options/options.js
+node tests/url-utils.test.js
+```

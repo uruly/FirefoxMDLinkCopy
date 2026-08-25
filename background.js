@@ -7,7 +7,7 @@ async function copyCurrentTabAsMarkdown(tab) {
 
   try {
     const cleanUrl = await sanitizeUrl(tab.url);
-    const markdown = `[${escapeMarkdownTitle(tab.title)}](${cleanUrl})`;
+    const markdown = `[${MDLinkCopyUrl.escapeMarkdownTitle(tab.title)}](${MDLinkCopyUrl.escapeMarkdownUrl(cleanUrl)})`;
 
     await navigator.clipboard.writeText(markdown);
     await showToast(tab.id, "コピーしました");
@@ -34,42 +34,11 @@ async function sanitizeUrl(rawUrl) {
     keepParams: [...MDLinkCopyDefaults.keepParams]
   });
 
-  const removeParams = toParamSet(settings.removeParams);
-  const keepParams = toParamSet(settings.keepParams);
-
-  for (const key of [...url.searchParams.keys()]) {
-    const normalizedKey = key.toLowerCase();
-
-    if (keepParams.has(normalizedKey)) {
-      continue;
-    }
-
-    if (removeParams.has(normalizedKey)) {
-      url.searchParams.delete(key);
-    }
-  }
-
-  return url.toString();
-}
-
-function toParamSet(params) {
-  if (!Array.isArray(params)) {
-    return new Set();
-  }
-
-  return new Set(
-    params
-      .map((param) => String(param).trim().toLowerCase())
-      .filter(Boolean)
+  return MDLinkCopyUrl.sanitizeUrlWithRules(
+    url.toString(),
+    settings.removeParams,
+    settings.keepParams
   );
-}
-
-function escapeMarkdownTitle(title) {
-  return title
-    .replaceAll("\\", "\\\\")
-    .replaceAll("[", "\\[")
-    .replaceAll("]", "\\]")
-    .replaceAll("\n", " ");
 }
 
 async function showToast(tabId, message) {

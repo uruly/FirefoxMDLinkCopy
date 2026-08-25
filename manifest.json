@@ -5,7 +5,7 @@
   "description": "Copy the current page as a Markdown link.",
   "permissions": ["activeTab", "clipboardWrite", "storage", "scripting"],
   "background": {
-    "scripts": ["shared/defaults.js", "background.js"]
+    "scripts": ["shared/defaults.js", "shared/url-utils.js", "background.js"]
   },
   "action": {
     "default_title": "Copy as Markdown link",
