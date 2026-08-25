@@ -10,8 +10,8 @@
   "action": {
     "default_title": "Copy as Markdown link",
     "default_icon": {
-      "16": "icons/icon.svg",
-      "32": "icons/icon.svg"
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
     }
   },
   "commands": {
@@ -28,8 +28,8 @@
     "open_in_tab": true
   },
   "icons": {
-    "48": "icons/icon.svg",
-    "128": "icons/icon.svg"
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
   },
   "browser_specific_settings": {
     "gecko": {

@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="MDLinkCopy">
-  <rect width="128" height="128" rx="24" fill="#1976d2"/>
-  <path fill="#fff" d="M28 38h72c5.5 0 10 4.5 10 10v32c0 5.5-4.5 10-10 10H28c-5.5 0-10-4.5-10-10V48c0-5.5 4.5-10 10-10Zm0 12v28h72V50H28Z"/>
-  <path fill="#1976d2" d="M38 58h8l7 10 7-10h8v20h-8V68l-5 7h-4l-5-7v10h-8V58Zm36 0h13c7 0 12 4 12 10s-5 10-12 10H74V58Zm8 7v6h5c2.4 0 4-1.1 4-3s-1.6-3-4-3h-5Z"/>
-</svg>

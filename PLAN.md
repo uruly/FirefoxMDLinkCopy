@@ -53,7 +53,10 @@ MDLinkCopy/
     options.css
     options.js
   icons/
-    icon.svg
+    icon-16.png
+    icon-32.png
+    icon-48.png
+    icon-128.png
   README.md
 ```
 
@@ -473,7 +476,10 @@ README には以下を記載します。
 `icons/` にツールバーとアドオン一覧で使うアイコンを配置します。
 
 ```text
-icon.svg
+icon-16.png
+icon-32.png
+icon-48.png
+icon-128.png
 ```
 
 初期版ではシンプルなリンクアイコンや Markdown の `M` を使ったアイコンで十分です。
