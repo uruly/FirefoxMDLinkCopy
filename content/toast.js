@@ -12,8 +12,8 @@ globalThis.MDLinkCopyShowToast = (message) => {
 
   Object.assign(toast.style, {
     position: "fixed",
+    top: "24px",
     right: "24px",
-    bottom: "24px",
     zIndex: "2147483647",
     padding: "10px 14px",
     borderRadius: "6px",
