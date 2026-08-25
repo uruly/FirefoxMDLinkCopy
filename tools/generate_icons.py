@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ICON_DIR = ROOT / "icons"
 SOURCE_ICON = ICON_DIR / "source-chatgpt-chain.png"
 SIZES = (16, 32, 48, 128)
-DARK_GRAY = (72, 76, 80)
+LINK_BLUE = (9, 105, 218)
 
 
 def remove_white_background(image):
@@ -38,7 +38,7 @@ def crop_to_content(image):
     return image.crop(bbox)
 
 
-def darken_artwork(image):
+def tint_artwork(image):
     image = image.copy()
     pixels = image.load()
 
@@ -52,9 +52,9 @@ def darken_artwork(image):
             shade = min(red, green, blue)
             factor = max(0.52, shade / 255)
             pixels[x, y] = (
-                round(DARK_GRAY[0] * factor),
-                round(DARK_GRAY[1] * factor),
-                round(DARK_GRAY[2] * factor),
+                round(LINK_BLUE[0] * factor),
+                round(LINK_BLUE[1] * factor),
+                round(LINK_BLUE[2] * factor),
                 alpha,
             )
 
@@ -62,7 +62,7 @@ def darken_artwork(image):
 
 
 def make_icon(source, size):
-    content = darken_artwork(crop_to_content(remove_white_background(source)))
+    content = tint_artwork(crop_to_content(remove_white_background(source)))
     canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     padding = max(1, round(size * 0.08))
     max_side = size - padding * 2
