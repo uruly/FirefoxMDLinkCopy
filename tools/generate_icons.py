@@ -11,16 +11,16 @@ LIGHT_GRAY = "#9aa0a6"
 
 
 def draw_chain(draw, offset_x, offset_y, color, stroke_width):
-    radius = 64
+    radius = 76
 
     draw.rounded_rectangle(
-        (72 + offset_x, 174 + offset_y, 288 + offset_x, 324 + offset_y),
+        (42 + offset_x, 158 + offset_y, 292 + offset_x, 342 + offset_y),
         radius=radius,
         outline=color,
         width=stroke_width,
     )
     draw.rounded_rectangle(
-        (188 + offset_x, 174 + offset_y, 404 + offset_x, 324 + offset_y),
+        (178 + offset_x, 158 + offset_y, 428 + offset_x, 342 + offset_y),
         radius=radius,
         outline=color,
         width=stroke_width,
@@ -33,8 +33,8 @@ def draw_icon(size):
     back_layer = Image.new("RGBA", (canvas_size, canvas_size), (0, 0, 0, 0))
     front_layer = Image.new("RGBA", (canvas_size, canvas_size), (0, 0, 0, 0))
 
-    draw_chain(ImageDraw.Draw(back_layer), 36, 52, LIGHT_GRAY, 42)
-    draw_chain(ImageDraw.Draw(front_layer), 0, 0, GRAY, 56)
+    draw_chain(ImageDraw.Draw(back_layer), 34, 50, LIGHT_GRAY, 48)
+    draw_chain(ImageDraw.Draw(front_layer), 0, 0, GRAY, 64)
 
     image.alpha_composite(back_layer)
     image.alpha_composite(front_layer)
