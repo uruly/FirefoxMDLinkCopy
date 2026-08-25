@@ -1,8 +1,8 @@
 const TOOLBAR_ICON_PATHS = {
-  16: "icons/toolbar-link-copy-16.png",
-  32: "icons/toolbar-link-copy-32.png",
-  48: "icons/toolbar-link-copy-48.png",
-  128: "icons/toolbar-link-copy-128.png"
+  16: "icons/chatgpt-chain-16.png",
+  32: "icons/chatgpt-chain-32.png",
+  48: "icons/chatgpt-chain-48.png",
+  128: "icons/chatgpt-chain-128.png"
 };
 
 browser.runtime.onInstalled.addListener(setToolbarIcon);

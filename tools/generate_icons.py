@@ -1,53 +1,60 @@
 from pathlib import Path
 
-from PIL import Image, ImageDraw
+from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
 ICON_DIR = ROOT / "icons"
+SOURCE_ICON = ICON_DIR / "source-chatgpt-chain.png"
 SIZES = (16, 32, 48, 128)
-GRAY = "#5f6368"
-LIGHT_GRAY = "#9aa0a6"
 
 
-def draw_chain(draw, offset_x, offset_y, color, stroke_width):
-    radius = 76
+def remove_white_background(image):
+    image = image.convert("RGBA")
+    pixels = image.load()
 
-    draw.rounded_rectangle(
-        (42 + offset_x, 158 + offset_y, 292 + offset_x, 342 + offset_y),
-        radius=radius,
-        outline=color,
-        width=stroke_width,
-    )
-    draw.rounded_rectangle(
-        (178 + offset_x, 158 + offset_y, 428 + offset_x, 342 + offset_y),
-        radius=radius,
-        outline=color,
-        width=stroke_width,
-    )
+    for y in range(image.height):
+        for x in range(image.width):
+            red, green, blue, alpha = pixels[x, y]
+            brightness = (red + green + blue) / 3
+
+            if brightness > 238:
+                pixels[x, y] = (red, green, blue, 0)
+            elif brightness > 218:
+                fade = int(alpha * (238 - brightness) / 20)
+                pixels[x, y] = (red, green, blue, fade)
+
+    return image
 
 
-def draw_icon(size):
-    canvas_size = 512
-    image = Image.new("RGBA", (canvas_size, canvas_size), (0, 0, 0, 0))
-    back_layer = Image.new("RGBA", (canvas_size, canvas_size), (0, 0, 0, 0))
-    front_layer = Image.new("RGBA", (canvas_size, canvas_size), (0, 0, 0, 0))
+def crop_to_content(image):
+    alpha = image.getchannel("A")
+    bbox = alpha.getbbox()
 
-    draw_chain(ImageDraw.Draw(back_layer), 34, 50, LIGHT_GRAY, 34)
-    draw_chain(ImageDraw.Draw(front_layer), 0, 0, GRAY, 44)
+    if not bbox:
+        return image
 
-    image.alpha_composite(back_layer)
-    image.alpha_composite(front_layer)
+    return image.crop(bbox)
 
-    rotated = image.rotate(-35, resample=Image.Resampling.BICUBIC)
-    return rotated.resize((size, size), Image.Resampling.LANCZOS)
+
+def make_icon(source, size):
+    content = crop_to_content(remove_white_background(source))
+    canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    padding = max(1, round(size * 0.08))
+    max_side = size - padding * 2
+    content.thumbnail((max_side, max_side), Image.Resampling.LANCZOS)
+    x = (size - content.width) // 2
+    y = (size - content.height) // 2
+    canvas.alpha_composite(content, (x, y))
+    return canvas
 
 
 def main():
     ICON_DIR.mkdir(exist_ok=True)
+    source = Image.open(SOURCE_ICON)
 
     for size in SIZES:
-        draw_icon(size).save(ICON_DIR / f"toolbar-link-copy-{size}.png")
+        make_icon(source, size).save(ICON_DIR / f"chatgpt-chain-{size}.png")
 
 
 if __name__ == "__main__":
