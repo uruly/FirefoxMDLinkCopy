@@ -53,10 +53,10 @@ MDLinkCopy/
     options.css
     options.js
   icons/
-    icon-16.png
-    icon-32.png
-    icon-48.png
-    icon-128.png
+    chain-16.png
+    chain-32.png
+    chain-48.png
+    chain-128.png
   README.md
 ```
 
@@ -92,8 +92,8 @@ touch README.md
   "action": {
     "default_title": "Copy as Markdown link",
     "default_icon": {
-      "16": "icons/icon-16.png",
-      "32": "icons/icon-32.png"
+      "16": "icons/chain-16.png",
+      "32": "icons/chain-32.png"
     }
   },
   "commands": {
@@ -110,8 +110,8 @@ touch README.md
     "open_in_tab": true
   },
   "icons": {
-    "48": "icons/icon-48.png",
-    "128": "icons/icon-128.png"
+    "48": "icons/chain-48.png",
+    "128": "icons/chain-128.png"
   },
   "browser_specific_settings": {
     "gecko": {
@@ -476,10 +476,10 @@ README には以下を記載します。
 `icons/` にツールバーとアドオン一覧で使うアイコンを配置します。
 
 ```text
-icon-16.png
-icon-32.png
-icon-48.png
-icon-128.png
+chain-16.png
+chain-32.png
+chain-48.png
+chain-128.png
 ```
 
 初期版ではシンプルなリンクアイコンや Markdown の `M` を使ったアイコンで十分です。

@@ -22,25 +22,21 @@ def draw_icon(size):
 
     link_layer = Image.new("RGBA", (canvas_size, canvas_size), (0, 0, 0, 0))
     link_draw = ImageDraw.Draw(link_layer)
-    stroke_width = 42
-    radius = 54
+    stroke_width = 52
+    radius = 66
 
     link_draw.rounded_rectangle(
-        (92, 190, 304, 322),
+        (74, 174, 314, 338),
         radius=radius,
         outline=WHITE,
         width=stroke_width,
     )
     link_draw.rounded_rectangle(
-        (208, 190, 420, 322),
+        (198, 174, 438, 338),
         radius=radius,
         outline=WHITE,
         width=stroke_width,
     )
-
-    # Open the touching sides so the two rounded loops read as chain links.
-    link_draw.rectangle((254, 192, 300, 320), fill=(0, 0, 0, 0))
-    link_draw.rectangle((212, 192, 258, 320), fill=(0, 0, 0, 0))
 
     rotated = link_layer.rotate(-35, resample=Image.Resampling.BICUBIC)
     image.alpha_composite(rotated)
@@ -52,7 +48,7 @@ def main():
     ICON_DIR.mkdir(exist_ok=True)
 
     for size in SIZES:
-        draw_icon(size).save(ICON_DIR / f"icon-{size}.png")
+        draw_icon(size).save(ICON_DIR / f"chain-{size}.png")
 
 
 if __name__ == "__main__":
