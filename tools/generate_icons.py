@@ -1,13 +1,13 @@
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageChops, ImageFilter
 
 
 ROOT = Path(__file__).resolve().parents[1]
 ICON_DIR = ROOT / "icons"
 SOURCE_ICON = ICON_DIR / "source-chatgpt-chain.png"
 SIZES = (16, 32, 48, 128)
-LINK_BLUE = (9, 105, 218)
+LINK_BLUE = (0, 76, 170)
 
 
 def remove_white_background(image):
@@ -38,6 +38,37 @@ def crop_to_content(image):
     return image.crop(bbox)
 
 
+def thicken_shadow(image):
+    shadow_mask = Image.new("L", image.size, 0)
+    source_pixels = image.load()
+    mask_pixels = shadow_mask.load()
+
+    for y in range(image.height):
+        for x in range(image.width):
+            red, green, blue, alpha = source_pixels[x, y]
+
+            if alpha == 0:
+                continue
+
+            brightness = (red + green + blue) / 3
+
+            if brightness > 150:
+                mask_pixels[x, y] = min(210, round(alpha * 1.25))
+
+    expanded_mask = shadow_mask.filter(ImageFilter.MaxFilter(15))
+    original_alpha = image.getchannel("A")
+    extra_mask = ImageChops.lighter(shadow_mask, expanded_mask)
+
+    shadow_layer = Image.new("RGBA", image.size, (155, 160, 165, 0))
+    shadow_layer.putalpha(extra_mask)
+
+    result = Image.new("RGBA", image.size, (0, 0, 0, 0))
+    result.alpha_composite(shadow_layer)
+    result.alpha_composite(image)
+    result.putalpha(ImageChops.lighter(result.getchannel("A"), original_alpha))
+    return result
+
+
 def tint_artwork(image):
     image = image.copy()
     pixels = image.load()
@@ -62,7 +93,7 @@ def tint_artwork(image):
 
 
 def make_icon(source, size):
-    content = tint_artwork(crop_to_content(remove_white_background(source)))
+    content = tint_artwork(crop_to_content(thicken_shadow(remove_white_background(source))))
     canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     padding = max(1, round(size * 0.04))
     max_side = size - padding * 2
