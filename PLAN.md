@@ -153,6 +153,7 @@ const DEFAULT_REMOVE_PARAMS = [
   "fbclid",
   "gclid",
   "gad_source",
+  "srsltid",
   "source"
 ];
 
@@ -233,6 +234,7 @@ utm_content
 fbclid
 gclid
 gad_source
+srsltid
 source
 ref
 spm

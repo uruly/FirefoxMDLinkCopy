@@ -32,6 +32,7 @@ Open the extension options page from Firefox Add-ons Manager.
 - `削除しないパラメータ`: query parameter names to keep even if they appear in the remove list.
 
 Each setting uses one parameter name per line.
+Add `srsltid` to `削除するパラメータ` if it is not already listed.
 
 Example:
 

@@ -1,7 +1,7 @@
 const assert = require("node:assert/strict");
 const MDLinkCopyUrl = require("../shared/url-utils.js");
 
-const removeParams = ["utm_source", "gad_source", "Source"];
+const removeParams = ["utm_source", "gad_source", "srsltid", "Source"];
 const keepParams = ["id", "asin"];
 
 assert.equal(
@@ -38,6 +38,15 @@ assert.equal(
     keepParams
   ),
   "https://example.com/article?id=123#section"
+);
+
+assert.equal(
+  MDLinkCopyUrl.sanitizeUrlWithRules(
+    "https://example.com/product?id=123&srsltid=abc",
+    removeParams,
+    keepParams
+  ),
+  "https://example.com/product?id=123"
 );
 
 assert.equal(

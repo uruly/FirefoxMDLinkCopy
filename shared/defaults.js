@@ -10,6 +10,7 @@ globalThis.MDLinkCopyDefaults = Object.freeze({
     "gad_source",
     "source",
     "ref",
+    "srsltid",
     "spm",
     "yclid",
     "mc_cid",
