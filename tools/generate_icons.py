@@ -6,42 +6,31 @@ from PIL import Image, ImageDraw
 ROOT = Path(__file__).resolve().parents[1]
 ICON_DIR = ROOT / "icons"
 SIZES = (16, 32, 48, 128)
-BLUE = "#1976d2"
-WHITE = "#ffffff"
-
-
-def rounded_rectangle(draw, xy, radius, fill):
-    draw.rounded_rectangle(xy, radius=radius, fill=fill)
+GRAY = "#5f6368"
 
 
 def draw_icon(size):
     canvas_size = 512
     image = Image.new("RGBA", (canvas_size, canvas_size), (0, 0, 0, 0))
     draw = ImageDraw.Draw(image)
-    rounded_rectangle(draw, (0, 0, canvas_size, canvas_size), 96, BLUE)
+    stroke_width = 58
+    radius = 72
 
-    link_layer = Image.new("RGBA", (canvas_size, canvas_size), (0, 0, 0, 0))
-    link_draw = ImageDraw.Draw(link_layer)
-    stroke_width = 52
-    radius = 66
-
-    link_draw.rounded_rectangle(
+    draw.rounded_rectangle(
         (74, 174, 314, 338),
         radius=radius,
-        outline=WHITE,
+        outline=GRAY,
         width=stroke_width,
     )
-    link_draw.rounded_rectangle(
+    draw.rounded_rectangle(
         (198, 174, 438, 338),
         radius=radius,
-        outline=WHITE,
+        outline=GRAY,
         width=stroke_width,
     )
 
-    rotated = link_layer.rotate(-35, resample=Image.Resampling.BICUBIC)
-    image.alpha_composite(rotated)
-
-    return image.resize((size, size), Image.Resampling.LANCZOS)
+    rotated = image.rotate(-35, resample=Image.Resampling.BICUBIC)
+    return rotated.resize((size, size), Image.Resampling.LANCZOS)
 
 
 def main():
