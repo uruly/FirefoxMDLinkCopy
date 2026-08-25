@@ -1,0 +1,116 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  background: Canvas;
+  color: CanvasText;
+}
+
+body {
+  margin: 0;
+}
+
+.settings {
+  width: min(920px, calc(100% - 32px));
+  margin: 32px auto;
+}
+
+.settings__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.settings__header h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+#status {
+  margin: 4px 0 0;
+  color: color-mix(in srgb, CanvasText 68%, Canvas);
+  font-size: 14px;
+}
+
+.settings__form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.param-group {
+  display: grid;
+  gap: 8px;
+}
+
+.param-group label {
+  font-weight: 700;
+}
+
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 260px;
+  resize: vertical;
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, CanvasText 24%, Canvas);
+  border-radius: 6px;
+  background: Field;
+  color: FieldText;
+  font: 14px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+textarea:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
+.actions {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+button {
+  min-height: 36px;
+  padding: 0 16px;
+  border: 1px solid #1565c0;
+  border-radius: 6px;
+  background: #1976d2;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1565c0;
+}
+
+button.secondary {
+  border-color: color-mix(in srgb, CanvasText 24%, Canvas);
+  background: ButtonFace;
+  color: ButtonText;
+}
+
+button.secondary:hover {
+  background: color-mix(in srgb, ButtonFace 86%, CanvasText);
+}
+
+#status {
+  min-height: 22px;
+}
+
+@media (max-width: 720px) {
+  .settings__form {
+    grid-template-columns: 1fr;
+  }
+
+  .settings {
+    margin-block: 20px;
+  }
+}

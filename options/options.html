@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MDLinkCopy Settings</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main class="settings">
+      <header class="settings__header">
+        <img src="../icons/icon.svg" alt="" width="40" height="40">
+        <div>
+          <h1>MDLinkCopy</h1>
+        </div>
+      </header>
+
+      <form id="optionsForm" class="settings__form">
+        <section class="param-group">
+          <label for="removeParams">削除するパラメータ</label>
+          <textarea id="removeParams" rows="12" spellcheck="false"></textarea>
+        </section>
+
+        <section class="param-group">
+          <label for="keepParams">削除しないパラメータ</label>
+          <textarea id="keepParams" rows="12" spellcheck="false"></textarea>
+        </section>
+
+        <div class="actions">
+          <button type="submit">保存</button>
+          <button id="reset" type="button" class="secondary">デフォルトに戻す</button>
+          <p id="status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </main>
+
+    <script src="../shared/defaults.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
