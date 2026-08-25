@@ -47,7 +47,7 @@ def main():
     ICON_DIR.mkdir(exist_ok=True)
 
     for size in SIZES:
-        draw_icon(size).save(ICON_DIR / f"clipboard-chain-{size}.png")
+        draw_icon(size).save(ICON_DIR / f"toolbar-link-copy-{size}.png")
 
 
 if __name__ == "__main__":

@@ -1,4 +1,23 @@
+const TOOLBAR_ICON_PATHS = {
+  16: "icons/toolbar-link-copy-16.png",
+  32: "icons/toolbar-link-copy-32.png",
+  48: "icons/toolbar-link-copy-48.png",
+  128: "icons/toolbar-link-copy-128.png"
+};
+
+browser.runtime.onInstalled.addListener(setToolbarIcon);
+browser.runtime.onStartup.addListener(setToolbarIcon);
 browser.action.onClicked.addListener(copyCurrentTabAsMarkdown);
+
+setToolbarIcon();
+
+async function setToolbarIcon() {
+  try {
+    await browser.action.setIcon({ path: TOOLBAR_ICON_PATHS });
+  } catch (error) {
+    console.error("Failed to set toolbar icon:", error);
+  }
+}
 
 async function copyCurrentTabAsMarkdown(tab) {
   if (!canCopyTab(tab)) {

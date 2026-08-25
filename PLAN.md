@@ -53,10 +53,10 @@ MDLinkCopy/
     options.css
     options.js
   icons/
-    clipboard-chain-16.png
-    clipboard-chain-32.png
-    clipboard-chain-48.png
-    clipboard-chain-128.png
+    toolbar-link-copy-16.png
+    toolbar-link-copy-32.png
+    toolbar-link-copy-48.png
+    toolbar-link-copy-128.png
   README.md
 ```
 
@@ -92,8 +92,8 @@ touch README.md
   "action": {
     "default_title": "Copy as Markdown link",
     "default_icon": {
-      "16": "icons/clipboard-chain-16.png",
-      "32": "icons/clipboard-chain-32.png"
+      "16": "icons/toolbar-link-copy-16.png",
+      "32": "icons/toolbar-link-copy-32.png"
     }
   },
   "commands": {
@@ -110,8 +110,8 @@ touch README.md
     "open_in_tab": true
   },
   "icons": {
-    "48": "icons/clipboard-chain-48.png",
-    "128": "icons/clipboard-chain-128.png"
+    "48": "icons/toolbar-link-copy-48.png",
+    "128": "icons/toolbar-link-copy-128.png"
   },
   "browser_specific_settings": {
     "gecko": {
@@ -476,10 +476,10 @@ README には以下を記載します。
 `icons/` にツールバーとアドオン一覧で使うアイコンを配置します。
 
 ```text
-clipboard-chain-16.png
-clipboard-chain-32.png
-clipboard-chain-48.png
-clipboard-chain-128.png
+toolbar-link-copy-16.png
+toolbar-link-copy-32.png
+toolbar-link-copy-48.png
+toolbar-link-copy-128.png
 ```
 
 初期版ではシンプルなリンクアイコンや Markdown の `M` を使ったアイコンで十分です。
