@@ -33,8 +33,8 @@ def draw_icon(size):
     back_layer = Image.new("RGBA", (canvas_size, canvas_size), (0, 0, 0, 0))
     front_layer = Image.new("RGBA", (canvas_size, canvas_size), (0, 0, 0, 0))
 
-    draw_chain(ImageDraw.Draw(back_layer), 34, 50, LIGHT_GRAY, 48)
-    draw_chain(ImageDraw.Draw(front_layer), 0, 0, GRAY, 64)
+    draw_chain(ImageDraw.Draw(back_layer), 34, 50, LIGHT_GRAY, 34)
+    draw_chain(ImageDraw.Draw(front_layer), 0, 0, GRAY, 44)
 
     image.alpha_composite(back_layer)
     image.alpha_composite(front_layer)
