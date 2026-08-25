@@ -64,7 +64,7 @@ def tint_artwork(image):
 def make_icon(source, size):
     content = tint_artwork(crop_to_content(remove_white_background(source)))
     canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
-    padding = max(1, round(size * 0.08))
+    padding = max(1, round(size * 0.04))
     max_side = size - padding * 2
     content.thumbnail((max_side, max_side), Image.Resampling.LANCZOS)
     x = (size - content.width) // 2
