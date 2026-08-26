@@ -9,7 +9,7 @@ MDLinkCopy is a Firefox extension that copies the current page as a Markdown lin
 ## Features
 
 - Copy the active page from the Firefox toolbar button.
-- Copy with `Ctrl+Shift+C`, or `Command+Shift+C` on macOS.
+- Copy with `Alt+Shift+L`, or `Option+Shift+L` on macOS.
 - Remove tracking query parameters before copying.
 - Keep product IDs and article IDs when configured.
 - Show a `コピーしました` toast after copying.
@@ -23,6 +23,9 @@ Load the extension temporarily in Firefox:
 3. Select `manifest.json` in this directory.
 4. Open a normal `http` or `https` page.
 5. Click the MDLinkCopy toolbar button.
+
+The default keyboard shortcut is `Alt+Shift+L`.
+On macOS, press `Option+Shift+L`.
 
 ## Settings
 

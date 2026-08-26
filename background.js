@@ -8,6 +8,7 @@ const TOOLBAR_ICON_PATHS = {
 browser.runtime.onInstalled.addListener(setToolbarIcon);
 browser.runtime.onStartup.addListener(setToolbarIcon);
 browser.action.onClicked.addListener(copyCurrentTabAsMarkdown);
+browser.commands.onCommand.addListener(handleCommand);
 
 setToolbarIcon();
 
@@ -34,6 +35,19 @@ async function copyCurrentTabAsMarkdown(tab) {
     console.error("Failed to copy Markdown link:", error);
     await showToast(tab.id, "コピーできませんでした");
   }
+}
+
+async function handleCommand(command) {
+  if (command !== "copy-markdown-link") {
+    return;
+  }
+
+  const [tab] = await browser.tabs.query({
+    active: true,
+    currentWindow: true
+  });
+
+  await copyCurrentTabAsMarkdown(tab);
 }
 
 function canCopyTab(tab) {

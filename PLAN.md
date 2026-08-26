@@ -99,8 +99,8 @@ touch README.md
   "commands": {
     "_execute_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+C",
-        "mac": "Command+Shift+C"
+        "default": "Alt+Shift+L",
+        "mac": "Alt+Shift+L"
       },
       "description": "Copy the current page as a Markdown link"
     }
@@ -415,7 +415,7 @@ Firefox の一時的な拡張機能として読み込みます。
 6. ツールバーボタンを押す
 7. クリップボードに Markdown リンクが入ることを確認する
 8. ページ上に `コピーしました` のトーストが表示されることを確認する
-9. `Ctrl+Shift+C` または macOS では `Command+Shift+C` でもコピーできることを確認する
+9. `Alt+Shift+L` または macOS では `Option+Shift+L` でもコピーできることを確認する
 
 確認例:
 

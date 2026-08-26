@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "MDLinkCopy",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Copy the current page as a Markdown link.",
   "permissions": ["activeTab", "clipboardWrite", "storage", "scripting"],
   "background": {
@@ -17,10 +17,10 @@
     }
   },
   "commands": {
-    "_execute_action": {
+    "copy-markdown-link": {
       "suggested_key": {
-        "default": "Ctrl+Shift+C",
-        "mac": "Command+Shift+C"
+        "default": "Alt+Shift+L",
+        "mac": "Alt+Shift+L"
       },
       "description": "Copy the current page as a Markdown link"
     }
